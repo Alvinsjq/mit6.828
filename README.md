@@ -16,7 +16,7 @@ Contents
 ---
   The structure of each branch consists of 3 folders: <br>
   * lab -- The source files of OS kernel (including answers)
-  * assignment -- The answer for the homeworks of this course.
+  * hw -- The answer for the homeworks of this course.
   
 
 
