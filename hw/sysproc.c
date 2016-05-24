@@ -45,14 +45,18 @@ sys_getpid(void)
 int
 sys_sbrk(void)
 {
-  int addr;
+  int addr, newsz;
   int n;
 
   if(argint(0, &n) < 0)
     return -1;
   addr = proc->sz;
-  if(growproc(n) < 0)
-    return -1;
+  newsz = addr + n;
+  if (newsz >= KERNBASE)
+      return -1;
+  proc->sz = newsz;
+  //if(growproc(n) < 0)
+  //  return -1;
   return addr;
 }
 
