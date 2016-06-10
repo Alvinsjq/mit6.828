@@ -1,0 +1,5 @@
+Q1:
+Since variable value's type is char *, which use virtual address, so variable x's type is uintptr_t.
+
+Q2:
+...
