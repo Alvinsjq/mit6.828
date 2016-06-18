@@ -122,7 +122,6 @@ ideintr(void)
   // Start disk on next buf in queue.
   if(idequeue != 0)
     idestart(idequeue);
-
   release(&idelock);
 }
 
@@ -143,7 +142,6 @@ iderw(struct buf *b)
     panic("iderw: ide disk 1 not present");
 
   acquire(&idelock);  //DOC:acquire-lock
-
   // Append b to idequeue.
   b->qnext = 0;
   for(pp=&idequeue; *pp; pp=&(*pp)->qnext)  //DOC:insert-queue
@@ -158,6 +156,5 @@ iderw(struct buf *b)
   while((b->flags & (B_VALID|B_DIRTY)) != B_VALID){
     sleep(b, &idelock);
   }
-
   release(&idelock);
 }
